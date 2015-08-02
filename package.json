@@ -1,15 +1,14 @@
 {
-  "name": "E2E-Testing-Demo",
+  "name": "E2E-Testing-Selenium-Demo",
   "version": "0.0.0",
   "description": "",
-  "main": "helloworld.js",
+  "main": "sample.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ivan Wei",
   "license": "MIT",
   "dependencies": {
-    "selenium-webdriver": "^2.46.1",
-    "mocha": "^2.2.5"
+    "selenium-webdriver": "^2.46.1"
   }
 }
