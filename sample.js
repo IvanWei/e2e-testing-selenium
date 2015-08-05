@@ -9,8 +9,8 @@ build();
 console.log('Broswer 設定... OK');
 
 console.log('設定受測網址位置...');
-  driver.get('http://www.google.com');
-  console.log('設定受測網址位置... OK');
+driver.get('http://www.google.com');
+console.log('設定受測網址位置... OK');
 
 console.log('==================進入測試==================');
 // 取當前瀏覽器大小
