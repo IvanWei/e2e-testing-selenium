@@ -2,11 +2,11 @@ console.log('載入 selenium-webdriver...');
 var webdriver = require('selenium-webdriver');
 var assert = require('assert');
 
-console.log('設定 Selenium 測試時使用的 Broswer (Chrome)... OK');
+console.log('設定 Selenium 測試時使用的 Browser (Chrome)... OK');
 var driver = new webdriver.Builder().
 withCapabilities(webdriver.Capabilities.chrome()).
 build();
-console.log('Broswer 設定... OK');
+console.log('Browser 設定... OK');
 
 console.log('設定受測網址位置...');
 driver.get('http://www.google.com');
@@ -14,35 +14,35 @@ console.log('設定受測網址位置... OK');
 
 console.log('==================進入測試==================');
 // 取當前瀏覽器大小
-driver.manage().window().getSize().then(function(broswerSize){
-  console.log('第一次取 Broswer 大小...');
-  console.log('當前瀏覽器高度： ' + broswerSize.height + 'px');
-  console.log('當前瀏覽器寬度: ' + broswerSize.width + 'px');
+driver.manage().window().getSize().then(function(browserSize){
+  console.log('第一次取 Browser 大小...');
+  console.log('當前瀏覽器高度： ' + browserSize.height + 'px');
+  console.log('當前瀏覽器寬度: ' + browserSize.width + 'px');
 });
 
-// 調整 Broswer 大小， seleinum 準許的最小長寬是 hieght = 272，width = 400
-var broswerHeight = 310, broswerWidth = 410;
-driver.manage().window().setSize(broswerWidth, broswerHeight);
+// 調整 Browser 大小， seleinum 準許的最小長寬是 hieght = 272，width = 400
+var browserHeight = 310, browserWidth = 410;
+driver.manage().window().setSize(browserWidth, browserHeight);
 
 // 取當前瀏覽器大小
-driver.manage().window().getSize().then(function(broswerSize){
-  console.log('縮小 Broswer...');
-  console.log('第二次取 Broswer 大小...');
-  console.log('調整後瀏覽器高度（' + broswerHeight + '）： ' + broswerSize.height + 'px');
-  console.log('調整後瀏覽器寬度（' + broswerWidth + '）： ' + broswerSize.width + 'px');
-  assert.equal(broswerHeight, 310);
-  assert.equal(broswerWidth, 410);
+driver.manage().window().getSize().then(function(browserSize){
+  console.log('縮小 Browser...');
+  console.log('第二次取 Browser 大小...');
+  console.log('調整後瀏覽器高度（' + browserHeight + '）： ' + browserSize.height + 'px');
+  console.log('調整後瀏覽器寬度（' + browserWidth + '）： ' + browserSize.width + 'px');
+  assert.equal(browserSize.height, browserHeight);
+  assert.equal(browserSize.width, browserWidth);
 });
 
 // 最大視窗
 driver.manage().window().maximize();
 
 // 取當前瀏覽器大小
-driver.manage().window().getSize().then(function(broswerSize){
-  console.log('放大 Broswer...');
-  console.log('第三次取 Broswer 大小...');
-  console.log('最大化後瀏覽器高度：' + broswerSize.height + 'px');
-  console.log('最大化後瀏覽器寬度：' + broswerSize.width + 'px');
+driver.manage().window().getSize().then(function(browserSize){
+  console.log('放大 Browser...');
+  console.log('第三次取 Browser 大小...');
+  console.log('最大化後瀏覽器高度：' + browserSize.height + 'px');
+  console.log('最大化後瀏覽器寬度：' + browserSize.width + 'px');
 });
 
 var searchBar = driver.findElement(webdriver.By.name('q'));
