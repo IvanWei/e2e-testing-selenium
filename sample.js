@@ -18,6 +18,7 @@ driver.manage().window().getSize().then(function(browserSize){
   console.log('第一次取 Browser 大小...');
   console.log('當前瀏覽器高度： ' + browserSize.height + 'px');
   console.log('當前瀏覽器寬度: ' + browserSize.width + 'px');
+  driver.sleep(2000);
 });
 
 // 調整 Browser 大小， seleinum 準許的最小長寬是 hieght = 272，width = 400
@@ -32,6 +33,7 @@ driver.manage().window().getSize().then(function(browserSize){
   console.log('調整後瀏覽器寬度（' + browserWidth + '）： ' + browserSize.width + 'px');
   assert.equal(browserSize.height, browserHeight);
   assert.equal(browserSize.width, browserWidth);
+  driver.sleep(2000);
 });
 
 // 最大視窗
@@ -43,22 +45,26 @@ driver.manage().window().getSize().then(function(browserSize){
   console.log('第三次取 Browser 大小...');
   console.log('最大化後瀏覽器高度：' + browserSize.height + 'px');
   console.log('最大化後瀏覽器寬度：' + browserSize.width + 'px');
+  driver.sleep(2000);
+});
+
+driver.getTitle().then(function(title) {
+  console.log('當前標題：' + title);
+  assert.equal(title, 'Google');
+  driver.sleep(2000);
 });
 
 var searchBar = driver.findElement(webdriver.By.name('q'));
 
 searchBar.getCssValue("width").then(function(searchBarWidth){
   console.log('取 SearchBar 大小...');
-  console.log('搜尋列寬度：' + searchBarWidth);  
+  console.log('搜尋列寬度：' + searchBarWidth);
+  searchBar.sendKeys('Cheese!');
+  driver.sleep(2000);
+  console.log('輸入「Cheese!」並按下查詢');
 });
 
-searchBar.sendKeys('Cheese!');
 searchBar.submit();
-
-driver.getTitle().then(function(title) {
-  console.log('當前標題：' + title);
-  assert.equal(title, 'Google');
-});
 
 driver.wait(function() {
   return driver.getTitle().then(function(title) {
@@ -70,5 +76,6 @@ driver.getTitle().then(function(title) {
   console.log('點下搜尋後的標題：' + title);
   assert.equal(title, 'Cheese! - Google 搜尋');
   console.log('==================結束測試==================');
+  driver.sleep(2000);
 });
 driver.quit();
